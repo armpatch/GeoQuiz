@@ -23,9 +23,9 @@ public class QuizActivity extends AppCompatActivity {
             new Question(R.string.question_australia, true),
             new Question(R.string.question_oceans,true),
             new Question(R.string.question_mideast, false),
-            new Question(R.string.question_africa, false),
-            new Question(R.string.question_americas, true),
-            new Question(R.string.question_asia, true)
+            //new Question(R.string.question_africa, false),
+            //new Question(R.string.question_americas, true),
+            //new Question(R.string.question_asia, true)
     };
 
     @Override
@@ -41,8 +41,12 @@ public class QuizActivity extends AppCompatActivity {
         //---------Text View------------//
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
 
+
         //---------True Button------------//
         mTrueButton = (Button) findViewById(R.id.true_button);
+        //incorrect cast
+        //mTrueButton = (Button) findViewById(R.id.question_text_view);
+
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,9 +63,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
-
         //---------Next Button------------//
-
         mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +114,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void updateQuestion() {
+        Log.d(TAG, "Updating question text", new Exception());
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
